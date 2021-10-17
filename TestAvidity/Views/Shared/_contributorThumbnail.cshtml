@@ -1,0 +1,17 @@
+﻿@model ContributorModel
+
+
+<div class="card-body">
+    <img src="@(string.IsNullOrEmpty(Model.Avatar_url) ? " /images/noimage.png" : Model.Avatar_url)" class="img-thumbnail" />
+    <div class="card-body">
+        <h3 class="card-title">@(string.IsNullOrEmpty(Model.Name) ? "Name is not available" : Model.Name)</h3>
+        <p class="card-text">@( $"Contributions: {Model.Contributions}" )</p>
+        <p class="card-text">@( $"Date of first contribution: {Model.ContributorCommits.FirstContribution}" )</p>
+        <p class="card-text">@( $"Date of last contribution: {Model.ContributorCommits.LastContribution}" )</p>
+        <p class="card-text">@( $"Number of commits: {Model.ContributorCommits.Commits}" )</p>
+        <p class="card-text">@( $"Average commits: {Model.ContributorCommits.AvgCommits.ToString("0.##")}" )</p>
+        <p class="card-text">@( $"Average additions: {Model.ContributorCommits.AvgAdditions.ToString("0.##")}" )</p>
+        <p class="card-text">@( $"Average deletions: {Model.ContributorCommits.AvgAdditions.ToString("0.##")}" )</p>
+
+    </div>
+</div>

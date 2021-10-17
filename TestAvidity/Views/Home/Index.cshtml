@@ -1,0 +1,35 @@
+﻿@model Repository
+@{
+    ViewData["Title"] = "Home Page";
+}
+@if (!User.Identity.IsAuthenticated)
+{ 
+    <button type="button" onclick="location.href='@Url.Action("Login", "Home")'">Login on Github</button>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+
+            <div class="col-md-4">
+                <h2>@Model.Name</h2>
+                <p>
+                    @Model.Description
+                </p>
+                <br />
+                <h3 class="display-4">Contributors</h3>
+                <div class="row">
+
+                    @foreach (var contributor in Model.Contributors)
+                    {
+                        <div class="card w-75">
+                            <partial name="_contributorThumbnail" model="@contributor" />
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
